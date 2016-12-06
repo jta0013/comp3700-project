@@ -48,8 +48,8 @@ public class ItemController {
 	}
 	public void deleteItem(String itemId) {
 		boolean removed = false;
-		for (Item i : items) {
-			if (i.getId().equals(itemId)) {
+		for (int i =0 ; i < items.size(); i++) {
+			if (items.get(i).getId().equals(itemId)) {
 				items.remove(i);
 				removed = true;
 			}
