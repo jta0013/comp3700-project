@@ -1,4 +1,4 @@
-package controller;
+package main.controllers;
 
 import java.util.List;
 import java.util.Scanner;

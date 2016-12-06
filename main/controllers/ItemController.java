@@ -1,9 +1,13 @@
-package controller;
+package main.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import main.domain.Item;
+import main.domain.Video;
+import main.domain.Magazine;
+import main.domain.Newspaper;
+import java.util.Date;
 import main.etc.ItemStatus;
 
 public class ItemController {
@@ -16,12 +20,31 @@ public class ItemController {
 	public ItemController(List<Item> items) {
 		this.items = items;
 	}
-	public void addItem(Item i) {
-		if (i != null) {
-			items.add(i);
+	public void addItem(String type, String title, String publisher, Date publish_date) {
+		switch(type){
+			case "video":
+				System.out.println(type);
+				Video v = new Video(title, publisher, publish_date);
+				System.out.println(String.format("\n Added video to library, title: %s, producer: %s, release date: %s", title, publisher, publish_date));
+				this.items.add(v);
+				System.out.println(v.toString());
+				break;
+			case "magazine":
+				Magazine m = new Magazine(title, publish_date);
+				System.out.println(String.format("\n Adding magazine to library, title: %s, publish date: %s", title, publish_date));
+				this.items.add(m);
+				System.out.println(m.toString());
+				break;
+			case "newspaper":
+				Newspaper n = new Newspaper(title, publish_date, publisher);
+				System.out.println(String.format("\n Adding newspaper to library, title: %s, publisher: %s, publish date: %s", title, publisher, publish_date));
+				this.items.add(n);
+				System.out.println(n.toString());				
+				break;
+			default:
+				System.out.println("\n Invalid item type, must be video, newspaper, or magazine");
+				break;
 		}
-		else 
-			throw new IllegalArgumentException("Item cannot be null");
 	}
 	public void deleteItem(String itemId) {
 		boolean removed = false;

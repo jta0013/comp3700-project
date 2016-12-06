@@ -13,6 +13,7 @@ public abstract class Item {
 	public Item (String title) {
 		this.title = title;
 		this.status = ItemStatus.Available;
+		this.id = generateId();
 		this.notes = new ArrayList<String>();
 		
 	}
